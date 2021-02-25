@@ -90,7 +90,7 @@ def _get_output(output, input, shape=None, complex_output=False):
         if complex_output and numpy.dtype(output).kind != 'c':
             raise RuntimeError("output must have complex dtype")
         output = numpy.zeros(shape, dtype=output)
-    elif output.shape != shape:
+    elif numpy.any(output.shape != shape):
         raise RuntimeError("output shape not correct")
     elif complex_output and output.dtype.kind != 'c':
         raise RuntimeError("output must have complex dtype")
